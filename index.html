@@ -1,10 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My GitHub Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Maker</title>
+<meta name="description" content="Paste a link, get a QR code you can download and print.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to my website deployed with GitHub Pages!</h1>
+
+<main class="sheet">
+
+  <header class="masthead">
+    <h1>QR Maker</h1>
+    <p>Paste a link. The code redraws as you type. Download it as a PNG when it looks right.</p>
+  </header>
+
+  <div class="workbench">
+
+    <section class="controls" aria-label="Code settings">
+
+      <div class="field">
+        <label for="text">Link or text</label>
+        <textarea id="text" rows="3" spellcheck="false"
+          placeholder="https://example.com">https://www.linkedin.com/in/baratsuresh2811/</textarea>
+        <p class="hint" id="counter">44 characters</p>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="size">Image size</label>
+          <select id="size">
+            <option value="256">256 px</option>
+            <option value="512" selected>512 px</option>
+            <option value="1024">1024 px — print</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="level">Damage tolerance</label>
+          <select id="level">
+            <option value="L">Low — smallest code</option>
+            <option value="M" selected>Medium</option>
+            <option value="Q">High</option>
+            <option value="H">Highest — scans when scuffed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="fg">Code colour</label>
+          <div class="swatch">
+            <input type="color" id="fg" value="#14181D">
+            <span id="fgVal">#14181D</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="bg">Background</label>
+          <div class="swatch">
+            <input type="color" id="bg" value="#FFFFFF">
+            <span id="bgVal">#FFFFFF</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="note">Keep the two colours far apart in brightness, or phone cameras will struggle.</p>
+
+      <button id="download" class="primary" type="button">Download PNG</button>
+
+    </section>
+
+    <section class="stage" aria-label="Preview">
+      <div class="quietzone">
+        <div id="qr" role="img" aria-label="QR code preview"></div>
+      </div>
+      <p class="status" id="status">Point a camera at it to test before you print.</p>
+    </section>
+
+  </div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
